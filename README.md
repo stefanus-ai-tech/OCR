@@ -68,7 +68,7 @@ This system is designed to process scanned images of Indonesian diplomas (Ijazah
     ```bash
     sudo apt install tesseract-ocr-ind  # Debian/Ubuntu
     ```
-    or download from [https://github.com/tesseract-ocr/tessdata](https://github.com/tesseract-ocr/tessdata) and place in tesseract data folder.
+    or download from [https://github.com/tesseract-ocr/tessdata](https://github.com/tesseract-ocr/tessdata/blob/main/ind.traineddata) and place in tesseract data folder.
 
 5.  **Groq API Key:**
 
