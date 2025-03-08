@@ -9,17 +9,25 @@ This system is designed to process scanned images of Indonesian diplomas (Ijazah
 2.  **`isIjazah.py`**: This script determines whether a given image is likely to be a valid Indonesian Ijazah document. It uses a combination of text-based checks (looking for keywords and phrases commonly found on Ijazahs) and visual feature analysis (checking for borders, layout patterns, and the presence of the national emblem) to make this determination. It returns a confidence score indicating the likelihood of the image being an Ijazah.
 
 3.  **`pipeline.py`**: This script orchestrates the entire OCR processing workflow. It first uses `isIjazah.py` to validate the input image. If the image is deemed a valid Ijazah, it then uses `crop_ijazah_info.py` to extract the student information and serial number sections. Finally, it performs OCR on these cropped sections using both `pytesseract` and the Groq API (with two different models: `llama-3.2-11b-vision-preview` and `llama-3.2-90b-vision-preview`). The results from the different OCR methods are compared, and the best result is selected based on a scoring system. The final output is a JSON object containing the extracted information, confidence scores, and all intermediate OCR results.
+   
+   ![Flowchart](./Flowchart.png)
 
 ## Installation
 
 1.  **Clone the Repository:**
 
     ```bash
-    git clone <repository_url>
-    cd OCR_Fix2
+    git clone https://github.com/stefanus-ai-tech/OCR
+    cd OCR
     ```
 
-2.  **Install Dependencies:**
+2. **Change branch to master branch:** 
+
+    ```bash
+    git checkout master
+    ```
+
+3.  **Install Dependencies:**
 
     This project requires several Python libraries. Install them using pip:
 
@@ -27,7 +35,7 @@ This system is designed to process scanned images of Indonesian diplomas (Ijazah
     pip install -r requirements.txt
     ```
 
-3.  **Install Tesseract OCR:**
+4.  **Install Tesseract OCR:**
 
     This project uses `pytesseract`, which is a Python wrapper for Google's Tesseract OCR engine. You need to install Tesseract itself:
 
@@ -62,9 +70,9 @@ This system is designed to process scanned images of Indonesian diplomas (Ijazah
     ```
     or download from [https://github.com/tesseract-ocr/tessdata](https://github.com/tesseract-ocr/tessdata) and place in tesseract data folder.
 
-4.  **Groq API Key:**
+5.  **Groq API Key:**
 
-    Obtain a Groq API key and set it as an environment variable in a `.env` file in the `OCR_Fix2` directory:
+    Obtain a Groq API key and set it as an environment variable in a `.env` file in the `OCR` directory:
 
     ```
     GROQ_API_KEY="your_groq_api_key"
